@@ -1,24 +1,28 @@
-$(document).ready(function() {
+$(document).ready(function(){
+    // Fetch data when document is ready
     fetch();
-    //add
-    $('#addnew').click(function() {
+    
+    // Show add modal on button click
+    $('#addnew').click(function(){
         $('#add').modal('show');
     });
-    $('#addForm').submit(function(e) {
+
+    // Add new member
+    $('#addForm').submit(function(e){
         e.preventDefault();
         var addform = $(this).serialize();
-        //console.log(addform);
         $.ajax({
             method: 'POST',
             url: 'add.php',
             data: addform,
             dataType: 'json',
-            success: function(response) {
+            success: function(response){
                 $('#add').modal('hide');
-                if (response.error) {
+                if(response.error){
                     $('#alert').show();
                     $('#alert_message').html(response.message);
-                } else {
+                }
+                else{
                     $('#alert').show();
                     $('#alert_message').html(response.message);
                     fetch();
@@ -26,15 +30,16 @@ $(document).ready(function() {
             }
         });
     });
-    //
 
-    //edit
-    $(document).on('click', '.edit', function() {
+    // Edit member
+    $(document).on('click', '.edit', function(){
         var id = $(this).data('id');
         getDetails(id);
         $('#edit').modal('show');
     });
-    $('#editForm').submit(function(e) {
+
+    // Submit edit form
+    $('#editForm').submit(function(e){
         e.preventDefault();
         var editform = $(this).serialize();
         $.ajax({
@@ -42,82 +47,83 @@ $(document).ready(function() {
             url: 'edit.php',
             data: editform,
             dataType: 'json',
-            success: function(response) {
-                if (response.error) {
+            success: function(response){
+                if(response.error){
                     $('#alert').show();
                     $('#alert_message').html(response.message);
-                } else {
+                }
+                else{
                     $('#alert').show();
                     $('#alert_message').html(response.message);
                     fetch();
                 }
-
                 $('#edit').modal('hide');
             }
         });
     });
-    //
 
-    //delete
-    $(document).on('click', '.delete', function() {
+    // Delete member
+    $(document).on('click', '.delete', function(){
         var id = $(this).data('id');
         getDetails(id);
         $('#delete').modal('show');
     });
 
-    $('.id').click(function() {
+    // Confirm and delete member
+    $('.id').click(function(){
         var id = $(this).val();
         $.ajax({
-            method: 'POST',
+            method: 'POST', 
             url: 'delete.php',
-            data: { id: id },
+            data: {id:id},
             dataType: 'json',
-            success: function(response) {
-                if (response.error) {
+            success: function(response){
+                if(response.error){
                     $('#alert').show();
                     $('#alert_message').html(response.message);
-                } else {
+                }
+                else{
                     $('#alert').show();
                     $('#alert_message').html(response.message);
                     fetch();
                 }
-
                 $('#delete').modal('hide');
             }
         });
     });
-    //
 
-    //hide message
-    $(document).on('click', '.close', function() {
+    // Hide alert message
+    $(document).on('click', '.close', function(){
         $('#alert').hide();
     });
-
 });
 
-function fetch() {
+// Fetch members data
+function fetch(){
     $.ajax({
         method: 'POST',
         url: 'fetch.php',
-        success: function(response) {
+        success: function(response){
             $('#tbody').html(response);
         }
     });
 }
 
-function getDetails(id) {
+// Get details of a member
+function getDetails(id){
     $.ajax({
         method: 'POST',
         url: 'fetch_row.php',
-        data: { id: id },
+        data: {id:id},
         dataType: 'json',
-        success: function(response) {
-            if (response.error) {
+        success: function(response){
+            if(response.error){
                 $('#edit').modal('hide');
                 $('#delete').modal('hide');
                 $('#alert').show();
                 $('#alert_message').html(response.message);
-            } else {
+            }
+            else{
                 $('.id').val(response.data.id);
                 $('.firstname').val(response.data.firstname);
                 $('.lastname').val(response.data.lastname);
