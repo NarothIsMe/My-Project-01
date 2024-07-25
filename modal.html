@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Add New</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
+                    <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -34,17 +34,16 @@
                             <input type="text" class="form-control" name="address">
                         </div>
                     </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
-            </form>
+                <button type="submit" class="btn btn-primary" form="addForm"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
             </div>
- 
         </div>
     </div>
 </div>
- 
+
 <!-- Edit -->
 <div class="modal fade" id="edit" tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -52,7 +51,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Edit Member</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
+                    <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -82,17 +81,16 @@
                             <input type="text" class="form-control address" name="address">
                         </div>
                     </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Update</a>
-            </form>
+                <button type="submit" class="btn btn-success" form="editForm"><span class="glyphicon glyphicon-check"></span> Update</button>
             </div>
- 
         </div>
     </div>
 </div>
- 
+
 <!-- Delete -->
 <div class="modal fade" id="delete" tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -100,18 +98,17 @@
             <div class="modal-header">
                 <h5 class="modal-title">Delete Member</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
+                    <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <p class="text-center">Are you sure you want to Delete</p>
+            <div class="modal-body">  
+                <p class="text-center">Are you sure you want to delete</p>
                 <h2 class="text-center fullname"></h2>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
                 <button type="button" class="btn btn-danger id"><span class="glyphicon glyphicon-trash"></span> Yes</button>
             </div>
-
         </div>
     </div>
 </div>
